@@ -17,6 +17,7 @@
        WORKING-STORAGE SECTION.
       *VARIABLES
        01 W-Variables.
+
            05  w-sum-calories                 pic 9(7).
            05  w-elf-counter                  pic 9(4).    
            05  w-max-elf occurs 500 times.
@@ -28,11 +29,13 @@
        01 INPUT-FILE-STATUS                   pic x(1).
            88 INPUT-FILE-EOF                   value 'Y'.
 
+
        Procedure Division.
        0000-Begin Section.
            perform 1000-Initialize 
            perform 2000-Main-Process
            perform 3000-print-summary
+
            stop run.
       ******************************************************************
       * Initialize 
@@ -41,12 +44,15 @@
            
            initialize  INPUT-FILE-STATUS
                        w-sum-calories
+
+
                        w-elf-counter
 
            open input File-In
 
            move 1 to w-elf-counter
            move 1 to w-subscript
+
            .
       ******************************************************************
       * Initialize 
@@ -54,6 +60,7 @@
        2000-Main-Process section.
            
            perform 2100-Read-File
+
       *    
            perform 2200-Load-Table
            
@@ -88,6 +95,7 @@
                       
                end-if
       *         compute w-elf-counter = w-elf-counter + 1
+
                perform 2100-Read-File
                    
            END-PERFORM
@@ -130,5 +138,6 @@
            end-perform
            
            display "w-max-sum : " w-max-sum
+
            close File-In
            .
