@@ -4,7 +4,7 @@
        input-output section.
        file-control.
       * INPUT CALORIE LIST  
-           SELECT File-In ASSIGN TO 'input'
+           SELECT File-In ASSIGN TO '..\data\input'
            organization is line sequential.
      
        data division.
